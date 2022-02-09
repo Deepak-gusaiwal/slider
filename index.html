@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0
+        }
+        /* slider is the main container */
+        
+        .slider {
+            max-width: 90%;
+            position: relative;
+            margin: auto;
+            height: 300px;
+            border: 2px solid gray;
+        }
+        /* use object-fit property in slider and in the images */
+        
+        .slider {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .item img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        /* next & previous buttons */
+        
+        .slider .previous,
+        .slider .next {
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            /* Styling the buttons themselves: */
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            /* Rounding the borders: */
+            border-radius: 0 3px 3px 0;
+            /* Background fading on hover: */
+            transition: 0.6s ease;
+        }
+        
+        .slider .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        /* When you hover over the buttons, add the background of the buttons: */
+        
+        .slider .previous:hover,
+        .slider .next:hover {
+            background-color: rgba(255, 0, 0, 0.99);
+        }
+        /* Slide animation: */
+        
+        .item {
+            animation: fade 500ms ease-in;
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <!-- slide-1 -->
+        <div class="item">
+            <h3 class="slide-heading">img-1</h3>
+            <img src="./gif.gif" alt="">
+
+        </div>
+        <!-- slide-2 -->
+        <div class="item">
+            <h3 class="slide-heading">img-2</h3>
+            <img src="./gif2.gif" alt="">
+        </div>
+        <!-- slide-3 -->
+        <div class="item">
+            <h3 class="slide-heading">img-3</h3>
+            <img src="./gif3.gif" alt="">
+        </div>
+
+        <!-- Arrow buttons -->
+        <a class="previous">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </div>
+
+
+
+
+
+    <script>
+        console.log('this is console');
+
+        let item = document.getElementsByClassName('item');
+        let previous = document.querySelector('.previous');
+        let next = document.querySelector('.next');
+
+        let i = 1;
+        firstslide();
+
+        next.addEventListener('click', () => {
+            i += 1;
+            if (i > item.length) {
+                i = 1;
+            }
+            console.log("i=", i);
+            for (let t of item) {
+                t.style.display = 'none'
+            }
+            item[i - 1].style.display = 'block'
+        })
+
+        previous.addEventListener('click', () => {
+            i -= 1;
+            if (i < 1) {
+                i = item.length;
+            }
+            console.log("i=", i);
+            for (let t of item) {
+                t.style.display = 'none'
+            }
+            item[i - 1].style.display = 'block'
+        })
+
+
+        function firstslide() {
+            for (let t of item) {
+                t.style.display = 'none'
+            }
+            item[0].style.display = 'block'
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // let slides = document.getElementsByClassName('slides');
+        // for (let i = 0; i < slides.length; i++) {
+        //     console.log(slides[i])
+
+        //     let next = document.getElementById('next');
+        //     next.addEventListener('click', () => {
+
+        //     })
+
+
+
+        // }
+
+
+        // // iterator of js
+        // let arr = ["Deepak", "Harry", "Rohan Das", "Ram"]
+
+        // function iteratearr(arr) {
+        //     let i = 0;
+        //     return {
+        //         n: function() {
+        //             if (i < arr.length) {
+        //                 return {
+        //                     name: arr[i++],
+        //                     result: false
+        //                 }
+        //             } else {
+        //                 return {
+        //                     done: true
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        // let b = iteratearr(arr);
+        // console.log(b)
+        // console.log(b.n().name)
+        // console.log(b.n().name)
+        // console.log(b.n().name)
+        // console.log(b.n().name)
+        // console.log(b.n().name)
+    </script>
+
+</body>
+
+</html>
